@@ -23,8 +23,8 @@ pipeline {
 
 
        stage('Helm Install') {
-           withKubeConfig([credentialsId: 'Jenkins_ServiceAccount' ,])
            steps {
+           withKubeConfig([credentialsId: 'Jenkins_ServiceAccount' ,])
            sh "helm upgrade --namespace $NAMESPACE $RELEASE_NAME v1/guestbook"
         //sh "helm install --namespace helm-guestbook myguestbook helm101/guestbook/"
            }
