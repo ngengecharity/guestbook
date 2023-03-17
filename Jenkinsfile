@@ -7,7 +7,6 @@ pipeline {
     RELEASE_NAME = 'guestbook-2.0'
     NAMESPACE = 'my-guestbook'
   }
-}
 
   //stages {
     //stage('Checkout') {
@@ -21,15 +20,16 @@ pipeline {
                 git credentialsId: 'github_token_access', url: 'https://github.com/ngengecharity/guestbook.git'
             }
         }  
-    }
 
 
-    stage('Helm Install') {
-      steps {
-        sh "helm upgrade --namespace $NAMESPACE $RELEASE_NAME v1/guestbook"
+       stage('Helm Install') {
+           steps {
+           sh "helm upgrade --namespace $NAMESPACE $RELEASE_NAME v1/guestbook"
         //sh "helm install --namespace helm-guestbook myguestbook helm101/guestbook/"
-      }
-    }
+           }
+       }
+    }   
+}
 
     // stage('Helm Test') {
     //   steps {
